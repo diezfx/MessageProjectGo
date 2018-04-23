@@ -11,8 +11,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
 }
 
-
-
 func greeting(w http.ResponseWriter, r *http.Request) {
 
 	// utc time?
@@ -20,29 +18,25 @@ func greeting(w http.ResponseWriter, r *http.Request) {
 
 	print(hour)
 
-	var greeting=""
+	var greeting = ""
 	if (hour >= 0 && hour < 6) {
-		greeting = "Good morning"
+		greeting = "Good night"
 	} else if (hour >= 6 && hour < 10) {
-		greeting = "Good mid-day"
+		greeting = "Good morning"
 	} else if (hour >= 10 && hour < 14) {
-		greeting = "Good afternoon"
+		greeting = "Good mid-day"
 	} else if (hour >= 14 && hour < 18) {
-
+		greeting = "Good afternoon"
 	} else {
 		greeting = "Good evening"
 	}
 
-
 	// slashes are allowed
-	var message = greeting +" "+ r.URL.Path[len("/welcome/"):]+"."
+	var message = greeting + " " + r.URL.Path[len("/welcome/"):] + "."
 
 	fmt.Fprint(w, message)
 
 }
-
-
-
 
 func main() {
 	http.HandleFunc("/", handler)
