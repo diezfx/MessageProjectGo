@@ -13,7 +13,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func greeting(w http.ResponseWriter, r *http.Request) {
 
-	// utc time?
+	// utc time with google app engine
 	var hour = time.Now().Hour()
 
 	print(hour)
